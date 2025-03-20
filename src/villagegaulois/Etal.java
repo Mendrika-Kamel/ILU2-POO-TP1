@@ -52,7 +52,7 @@ public class Etal {
 
 	public String acheterProduit(int quantiteAcheter, Gaulois acheteur) {
 			
-		try {
+
 		
 			if (!etalOccupe) {
 			    throw new IllegalStateException("L'étal n'est pas occupé, impossible d'acheter un produit.");
@@ -86,10 +86,7 @@ public class Etal {
 						+ vendeur.getNom() + "\n");
 			}
 			return chaine.toString();
-		} catch (Exception e) {
-	        e.printStackTrace(System.err);
-	        return "";
-		}
+		
 		
 	}
 
