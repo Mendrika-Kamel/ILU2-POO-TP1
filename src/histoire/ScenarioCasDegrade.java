@@ -1,28 +1,36 @@
+
 package histoire;
 
-import personnages.Chef;
-import personnages.Gaulois;
 import villagegaulois.Etal;
-import villagegaulois.Village;
+import personnages.Gaulois;
 
 public class ScenarioCasDegrade {
-	public static void main(String[] args) {
-		Village village = new Village("le village des irréductibles", 10, 5);
-		Chef abraracourcix = new Chef("Abraracourcix", 10, village);
-		village.setChef(abraracourcix);
-		
-		
-		Gaulois bonemine = new Gaulois("Bonemine", 7);
 	
+	public static void main(String[] args) {
+		Etal etal = new Etal();
 		
-		village.ajouterHabitant(bonemine);
-		village.ajouterHabitant(abraracourcix);
-
+		etal.libererEtal();
 		
-		Etal etalFleur = village.rechercherEtal(bonemine);
-		System.out.println(etalFleur.acheterProduit(10, abraracourcix));
-
-		System.out.println("Fin du test");
-
+		Gaulois obelix = new Gaulois("Obélix", 25);
+		etal.occuperEtal(obelix, "menhirs", 5);
+		etal.acheterProduit(2, null);
+		
+		try {
+			etal.acheterProduit(0, null);
 		}
+		catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		}
+		
+		etal.libererEtal();
+		
+		try {
+			etal.acheterProduit(2, obelix);
+		}
+		catch (IllegalStateException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("Fin du test");
+	}
 }
